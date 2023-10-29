@@ -2,11 +2,19 @@ import { GiHamburgerMenu } from 'react-icons/gi'
 import { MockCommands } from "@/assets/mock/commands";
 import { Category } from "@/lib/types";
 import { useState } from "react";
+import { useGlobalStore } from '@/lib/store';
 
 const Navbar = () => {
     const [isOpened, setIsOpened] = useState<boolean>(false);
+    const { changeFilterName, changeFilterMode, filter } = useGlobalStore();
 
     const toggleOpened = () => setIsOpened(prev => !prev);
+    
+    const toFocus = (name: string) => {
+        changeFilterName(name);
+        changeFilterMode(true);
+        filter(name);
+    }
 
     return (
         <header className="w-full min-h-[52px] z-[9999] bg-white lg:h-14 fixed max-lg:flex-col flex px-4 py-2 lg:items-center justify-start border-b border-gray-300">
@@ -23,7 +31,7 @@ const Navbar = () => {
             <nav className={`flex flex-1 h-full lg:items-center lg:justify-end max-lg:flex-col ${!isOpened && "max-lg:hidden"}`}>
                 {MockCommands.map((command: Category, i: number) => {
                     return (
-                        <a href={`#${command.kategoria.toLowerCase()}`} key={i} className="flex items-center lg:px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900">
+                        <a onClick={() => toFocus(command.kategoria)} href={`#commands`} key={i} className="flex items-center lg:px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900">
                             {command.kategoria}
                         </a>
                     )

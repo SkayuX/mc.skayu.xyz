@@ -1,16 +1,7 @@
 import { MockCommands } from "@/assets/mock/commands";
 import { create } from "zustand";
 import { Command } from "./types";
-
-type GlobalStore = {
-    navSelectedItem: string;
-    filterName: string;
-    filter: (filterName: string) => void;
-    filterMode: boolean;
-    changeFilterName: (filterName: string) => void;
-    changeFilterMode: (filterMode: boolean) => void;
-    filteredCommands: Command[];
-}
+import { GlobalStore } from "./types";
 
 export const useGlobalStore = create<GlobalStore>((set) => ({
     navSelectedItem: "",

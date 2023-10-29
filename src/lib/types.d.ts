@@ -13,4 +13,14 @@ export type Command = {
     };
 }
 
+export type GlobalStore = {
+    navSelectedItem: string;
+    filterName: string;
+    filter: (filterName: string) => void;
+    filterMode: boolean;
+    changeFilterName: (filterName: string) => void;
+    changeFilterMode: (filterMode: boolean) => void;
+    filteredCommands: Command[];
+}
+
 export type FilteredCommands = Command[];

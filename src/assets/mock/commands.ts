@@ -79,6 +79,103 @@ export const MockCommands: Category[] =
       ]
     },
     {
+      "kategoria": "Gildie",
+      "komendy": [
+        {
+          "nazwa": "Załóż gildię",
+          "komenda": "/zaloz [tag] [nazwa]",
+          "parametry": {
+            "Tag": "Tag gildii",
+            "Nazwa": "Nazwa gildii"
+          }
+        },
+        {
+          "nazwa": "Zaproś gracza do gildii",
+          "komenda": "/zapros [gracz]",
+          "parametry": {
+            "Gracz": "Gracz, którego zapraszasz do gildii"
+          }
+        },
+        {
+          "nazwa": "Dołącz do gildii",
+          "komenda": "/dolacz [tag]",
+          "parametry": {
+            "Tag": "Tag gildii, do której dołączasz"
+          }
+        },
+        {
+          "nazwa": "Informacje o gildii",
+          "komenda": "/info [tag]",
+          "parametry": {
+            "Tag": "Tag gildii, o którą pytasz"
+          }
+        },
+        {
+          "nazwa": "Teleportuj do bazy gildii",
+          "komenda": "/baza"
+        },
+        {
+          "nazwa": "Powieksz teren gildii",
+          "komenda": "/powieksz"
+        },
+        {
+          "nazwa": "Przedłuż ważność gildii",
+          "komenda": "/przedluz"
+        },
+        {
+          "nazwa": "Oddaj zalozyciela gildii",
+          "komenda": "/lider [gracz]",
+          "parametry": {
+            "Gracz": "Gracz, któremu oddajesz rolę założyciela"
+          }
+        },
+        {
+          "nazwa": "Nadaj zastępcę gildii",
+          "komenda": "/zastepca [gracz]",
+          "parametry": {
+            "Gracz": "Gracz, któremu nadajesz rolę zastępcy"
+          }
+        },
+        {
+          "nazwa": "Nawiaż sojusz z inną gildią",
+          "komenda": "/sojusz [tag]",
+          "parametry": {
+            "Tag": "Tag gildii, z którą chcesz nawiązać sojusz"
+          }
+        },
+        {
+          "nazwa": "Opuszczaj gildię",
+          "komenda": "/opusc"
+        },
+        {
+          "nazwa": "Wyrzuć gracza z gildii",
+          "komenda": "/wyrzuc [gracz]",
+          "parametry": {
+            "Gracz": "Gracz, którego wyrzucasz z gildii"
+          }
+        },
+        {
+          "nazwa": "Rozwiąż sojusz z inną gildią",
+          "komenda": "/rozwiaz [tag]",
+          "parametry": {
+            "Tag": "Tag gildii, z którą chcesz rozwiązać sojusz"
+          }
+        },
+        {
+          "nazwa": "Usuń gildię",
+          "komenda": "/usun"
+        },
+        {
+          "nazwa": "Pokaż przedmioty potrzebne do założenia gildii",
+          "komenda": "/przedmioty"
+        },
+        {
+          "nazwa": "Rozpocznij ucieczkę z terenu innej gildii",
+          "komenda": "/ucieczka"
+        }
+      ]
+    },
+    {
       "kategoria": "Ekonomia",
       "komendy": [
         {

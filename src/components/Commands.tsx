@@ -20,16 +20,22 @@ const Commands = () => {
 
     const clear = () => changeFilterMode(false);
 
+    const submitByEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === "Enter") {
+            submit();
+        }
+    }
+
     return (
         <section id="commands" className="w-full min-h-screen flex flex-col pt-20 justify-center items-center">
-                <h1 className="text-6xl font-bold text-gray-900">
+                <h1 className="text-4xl lg:text-6xl font-bold text-gray-900">
                     Komendy
                 </h1>
 
                 <div className="w-full h-auto flex flex-col items-center xl:px-32 lg:px-8 md:px-4 px-2 mt-8">
                     <section className="max-sm:flex-col w-[576px] h-auto max-sm:space-y-3 max-sm:w-4/5 sm:space-x-4 lg:mt-4 justify-between flex">
                         <div className="lg:w-96 max-sm:w-full max-lg:w-[calc(100%-12rem)] h-auto relative flex items-center justify-end">
-                            <input ref={inputRef} className="border-[2px] w-full rounded-sm px-4 py-2 outline-none text-gray-700 border-gray-700 border-opacity-50" placeholder="Filtruj" />
+                            <input onKeyDown={submitByEnter} ref={inputRef} className="border-[2px] w-full rounded-sm px-4 py-2 outline-none text-gray-700 border-gray-700 border-opacity-50" placeholder="Filtruj" />
                             {filterMode ? <AiOutlineClose onClick={clear} className="absolute opacity-70 cursor-pointer mr-4" size={24} /> : <AiOutlineSearch className="absolute opacity-30 mr-4" size={24} />}
                         </div>
 
@@ -38,11 +44,11 @@ const Commands = () => {
 
                     <section className="flex-col w-[576px] h-auto max-sm:space-y-3 max-sm:w-4/5 mt-4 flex">
                         <Accordion type="multiple">
-                        {!filterMode && MockCommands.map((category: Category) => {
+                        {!filterMode && MockCommands.map((category: Category, i: number) => {
                             return (
-                                <AccordionItem value={`item-${category.kategoria}`}>
+                                <AccordionItem value={`item-${category.kategoria}`} key={i}>
                                     <AccordionTrigger>
-                                        <p id={`${category.kategoria}`}>{category.kategoria}</p>
+                                        <p className="font-semibold" id={`${category.kategoria}`}>{category.kategoria}</p>
                                     </AccordionTrigger>
                                     <AccordionContent>
                                         {category.komendy.map((command: Command, j: number) => {
@@ -74,9 +80,9 @@ const Commands = () => {
                                                                         )
                                                                     })
                                                                 ) : (
-                                                                  <p className="text-gray-500 my-4 text-sm">
-                                                                    Brak parametrów
-                                                                  </p>
+                                                                    <p className="text-gray-500 my-4 text-sm">
+                                                                        Brak parametrów
+                                                                    </p>
                                                                 )
                                                             }
                                                         </AccordionContent>
@@ -89,9 +95,9 @@ const Commands = () => {
                             )
                         })}
 
-                        {filterMode && filteredCommands.map((command: Command) => {
+                        {filterMode && filteredCommands.map((command: Command, i: number) => {
                                 return (
-                                    <AccordionItem value={`item-${command.komenda}`}>
+                                    <AccordionItem value={`item-${command.komenda}`} key={i}>
                                         <AccordionTrigger>
                                             {command.nazwa}
                                         </AccordionTrigger>
@@ -117,9 +123,9 @@ const Commands = () => {
                                                         )
                                                     })
                                                 ) : (
-                                                  <p className="text-gray-500 my-4 text-sm">
-                                                    Brak parametrów
-                                                  </p>
+                                                    <p className="text-gray-500 my-4 text-sm">
+                                                        Brak parametrów
+                                                    </p>
                                                 )
                                             }
                                         </AccordionContent>
@@ -127,6 +133,12 @@ const Commands = () => {
                                 )
                             })
                         }
+
+                        {filterMode && filteredCommands.length === 0 && (
+                            <p className="text-gray-500 my-4 text-sm">
+                                Nie znaleziono komend
+                            </p>
+                        )}
                         </Accordion>
                     </section>
                 </div>
